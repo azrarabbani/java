@@ -46,8 +46,8 @@ public class FindAreaUtil {
         for(int i = 0; i < lake.length; i++) {
             for (int j = 0; j < lake.length; j++) {
                 if(lake[i][j] == 1 && !visited[i][j]) {
-                    System.out.println("NNNNNNNext " +i+" , "+j);
-                        int count = getLandArea(i, j, 0);
+                    System.out.println("Next " +i+" , "+j);
+                        int count = getLandArea(i, j); //(0,5)
                     if(count > 0) {
                         System.out.println("Land Area " + count);
                     }
@@ -57,41 +57,65 @@ public class FindAreaUtil {
         }
         return maxArea;
     }
+//        {0,0,0,0,0,1,1,1},
+//        {0,1,1,0,0,1,1,0},
+//        {0,1,1,0,0,1,0,0},
+//        {0,0,0,0,0,0,0,0},
+//        {0,0,0,0,0,1,1,1},
+//        {1,1,1,1,1,0,0,0},
+//        {0,1,1,1,0,0,0,0},
+//        {0,1,1,1,0,0,0,0}
 //    {1,0,0},
 //    {0,1,1},
 //    {0,0,1}
-    private int getLandArea( int x, int y, int count ) {
+    private int getLandArea( int x, int y) {
+        int count = 0;
         if(y >= lake.length || x < 0  || y < 0   || x >= lake.length || lake[x][y] == 0 || visited[x][y]) {
             return count;
         }
-        visited[x][y] = true;
-        return getLandArea(x, y + 1, count + 1) + getLandArea(x, y - 1, 0) + getLandArea(x - 1, y, 0) + getLandArea(x + 1, y, 0);
+        visited[x][y] = true;//(0,5, 1), (0,6,2),(0,7,3) + (0,4,0), (0,3,0), (0,2,0), (0,1,0), (0,-1,0) + (-1,5,0) + (1,5), (2,5,0))
+        count++;
+        count += getLandArea(x, y + 1);
+        count += getLandArea(x, y - 1);
+        count += getLandArea(x - 1, y);
+        count += getLandArea(x + 1, y);
+        return count;
     }
 
+//    private int getLandArea( int x, int y, int count) {
+//        if(y >= lake.length || x < 0  || y < 0   || x >= lake.length || lake[x][y] == 0 || visited[x][y]) {
+//            return count;
+//        }
+//        visited[x][y] = true;//(0,5, 1), (0,6,2),(0,7,3) + (0,4,0), (0,3,0), (0,2,0), (0,1,0), (0,-1,0) + (-1,5,0) + (1,5), (2,5,0))
+//
+//        return getLandArea(x, y + 1, count + 1) + getLandArea(x, y - 1, 0) + getLandArea(x - 1, y, 0) + getLandArea(x + 1, y, 0);
+//    }
+//
 
 
-
-//    private int getLandArea( int x, int y, int count ) {
+//    private int getLandArea( int x, int y) {
+//        int count =0;
 //        System.out.println("Recursion : x="+x+ " , y="+y);
 //        if(y >= lake.length || x < 0  || y < 0   || x >= lake.length || lake[x][y] == 0 || visited[x][y]) {
-//            System.out.println("----- Returning : x="+x+ "  , y="+y+" , count="+count +", lake[x][y] ="+lake[x][y] +", visited[x][y]="+visited[x][y] );
+//            //System.out.println("----- Returning : x="+x+ "  , y="+y+" , count="+count +", lake[x][y] ="+lake[x][y] +", visited[x][y]="+visited[x][y] );
 //            // System.out.println("------------------------------------------------------------------");
 //            return count;
 //        }
 //        visited[x][y] = true;
+//        count++;
 //        System.out.println("calling right:x="+x+ ",y="+y+",count="+count);
-//        //return getLandArea(x, y + 1, count + 1) + getLandArea(x, y - 1, 0) + getLandArea(x - 1, y, 0) + getLandArea(x + 1, y, 0);
-//        count = getLandArea(x, y + 1, count + 1);
-//        System.out.println("calling left:x="+x+ ",y="+y+",count="+count);
-//        count += getLandArea(x, y - 1, 0);
-//        System.out.println("calling up:x="+x+ ",y="+y+",count="+count);
-//        count += getLandArea(x - 1, y, 0);
-//        System.out.println("calling down:x="+x+ ",y="+y+",count="+count);
-//        count += getLandArea(x + 1, y, 0);
+//      //  return getLandArea(x, y + 1) + getLandArea(x, y - 1) + getLandArea(x - 1, y) + getLandArea(x + 1, y);
+//        count += getLandArea(x, y + 1);
+//        //System.out.println("calling left:x="+x+ ",y="+y+",count="+count);
+//        count += getLandArea(x, y - 1);
+//        //System.out.println("calling up:x="+x+ ",y="+y+",count="+count);
+//        count += getLandArea(x - 1, y);
+//        //System.out.println("calling down:x="+x+ ",y="+y+",count="+count);
+//        count += getLandArea(x + 1, y);
 //        System.out.println("ending:x="+x+ ",y="+y+",count="+count);
-//        System.out.println("------------------------------------------------------------------");
+//        //System.out.println("------------------------------------------------------------------");
 //        return count;
-//    }
+    //}
 
 
     /**

@@ -75,16 +75,30 @@ public class NumberUtils {
 
     }
 
-    private static void isPowerOf4(int input ) {
+    int median(int[] num){
+        if(num == null || num.length == 0) return -1;
+        if(num.length == 1) return num[0];
+        if(num.length == 2) return num[0] + num[1] / 2;
+        int size = num.length;
+        int mod = size % 2;
+        int mid = size / 2;
+        if(mod == 0) { //even
+            return num[mid-1] + num [mid] / 2;
+        } else {//odd
+            return num[mid];
+        }
 
-//        for(int i=1; i<input/4; i++) {
-//            if(Math.pow(i,4) == input) {
-//                System.out.print(true);
-//                return;
-//            }
-//        }
-//
-//        System.out.print(false);
+    }
+
+
+    private static void isPowerOf4(int input ) {
+        for(int i=1; i<input/4; i++) {
+            if(Math.pow(i,4) == input) {
+                System.out.print(true);
+                return;
+            }
+        }
+        System.out.print(false);
 
         double d = Math.sqrt(input);
         System.out.println("input="+input);
@@ -92,10 +106,9 @@ public class NumberUtils {
         d = Math.sqrt(d);
         System.out.println("Sqrt  " + d);
 
-//        d = Math.sqrt(d);
-//        System.out.println("Sqrt  " + d);
+        d = Math.sqrt(d);
+        System.out.println("Sqrt  " + d);
         System.out.println("power  " + Math.pow(d, 9));
-
     }
 
 
@@ -109,11 +122,11 @@ public class NumberUtils {
 
         System.out.println(" after swapping X = " + x + "   , Y = " + y);
 
-        x =87; y=34;
+        x =4; y=2;
         System.out.println(" before swapping X = "+x +"   , Y = "+y);
-        x = x + y;
-        y = x - y;
-        x = x - y;
+        x = x + y; //6
+        y = x - y;//4
+        x = x - y;//2
 
         System.out.println(" after swapping X = " + x + "   , Y = " + y);
 
@@ -125,6 +138,9 @@ public class NumberUtils {
         System.out.println(" after swapping X = "+x +"   , Y = "+y);
 
     }
+
+
+
     public static byte[] toBinary(int number) {
         byte[] binary = new byte[32];
         int index = 0;
@@ -170,13 +186,12 @@ public class NumberUtils {
                 System.out.println(in);
             }
         }
-
         //complexity O(n) + O(n)
         //Merge sort is O(n log(n)) while checking neighboring values is simply O(n).
         return duplicates;
     }
 
-
+//0,1,1,2,4,8,
     public static int tribonacci(int num) {
         if(num == 1) { return 0;}
         if(num == 2 || num == 3) { return 1;}
@@ -223,13 +238,11 @@ public class NumberUtils {
         for(int i = pointer2;  i < sizeOfList2 ; i++) {
             union.add(list2[pointer2]);
         }
-
         return union;
     }
 
 
     public static void convert(int input) {
-
         int copyOfInput = input;
         StringBuilder sb = new StringBuilder();
         while (copyOfInput > 0) {
@@ -237,57 +250,9 @@ public class NumberUtils {
             sb.append(bit);
             copyOfInput = copyOfInput / 2;
         }
-
-
-
         System.out.printf("\nDecimal number %d in Binary format is %s %n", input, sb.reverse().toString());
     }
 
 
-
-//    (1)4=1
-//            (2)4=16
-//            (3)4=81
-//            (4)4=256
-//
-//            81 -> true
-//
-//            27->
-//            25->false
-//
-//            1) for(int i=1; i<input/4; i++) {
-//        if(Math.pow(i,4) == input) {
-//            reutrn true;
-//        }
-//    }
-//
-//    2) Math.sqrt => if that is an integer.
-//    Math.sqrt => if that is an integer.
-//
-//            if(Math.pow(result,4) == input) {
-//        return true;
-//    }
-//
-//    3) int result = (int) Math.log(input)/Math.log(4);
-//    if(Math.pow(result,4) == input) return true;
-//
-//
-//
-//
-//    boolean isPowerOf4(int input){
-//        int inputCopy = input;
-//        while( inputCopy > 4) {
-//            mod = input % 4;
-//            inputCopy = inputCopy / 4;
-//        }
-//
-//
-//
-//        mod = 2
-//        81/4 = 2 + 1 = Math.pow(3, 4) == input
-//
-//        256 / 4 = 64
-//
-//    }
 
 }

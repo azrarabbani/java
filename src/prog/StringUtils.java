@@ -363,19 +363,19 @@ public class StringUtils {
     }
 
 
-    public static void permutationRecursive(char[] chars, int j, Set<String> permutations) {
-        if(j >= chars.length) {
-            return;
-        } else {
-            permutationRecursive(chars, j +1,permutations);
-            for (int i = 0 ; i < chars.length; i++) {
-                if(i != j ) {
-                    swapChar(chars, i, j);
-                    permutations.add(new String(chars));
-                }
+    public static Set<String> permutationRecursive(char[] c, int index, Set<String> p){
+        if(index >= c.length) {
+            return p;
+        }
+        for(int i = 0 ; i < c.length; i++){ //tom: otm
+            if(i!=index) {
+                char[] cc = swapChar(c, i ,index);
+                p.add(new String(cc));
+                permutationRecursive(c, index + 1, p);
+
             }
         }
-        return;
+        return p;
     }
 
     public static void findWordsFromString(String str) {

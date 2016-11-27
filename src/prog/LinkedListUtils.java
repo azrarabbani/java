@@ -15,6 +15,7 @@ public class LinkedListUtils {
         Node turtle = node; // slower moving node
         Node rabbit = node.next; // faster moving node
         while (rabbit != null) {
+            System.out.println("T="+turtle.data+" , R="+rabbit.data);
             if (rabbit.equals(turtle)) {
                 // the faster moving node has caught up with the slower moving node
                 return true;
@@ -24,6 +25,7 @@ public class LinkedListUtils {
             } else {
                 turtle = turtle.next;
                 rabbit = rabbit.next.next;
+
             }
         }
         // rabbit reached the end
@@ -249,14 +251,14 @@ public class LinkedListUtils {
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;
-        node4.next = node5;
+        node4.next = node2;
 
         node5.next = node6;
         node6.next = node7;
         node7.next = node8;
         node8.next = node9;
-//        boolean hasLoop = ls.isInInfiniteLoop(node1);
-//        System.out.println("Loop found "+hasLoop);
+       boolean hasLoop = ls.isInInfiniteLoop(node1);
+        System.out.println("Loop found "+hasLoop);
         //System.out.println("Kth Element from End "+getKthElementFromEnd(node1, 3).data);
 
 //        1 2 3 4 5 6 7
@@ -278,104 +280,104 @@ public class LinkedListUtils {
 //        0
 //        2
 //        1 2
-        System.out.println("Test case 1");
-        System.out.println("--------------------------");
-        Node headA = createLinkedListWithDataValues(1,3,5,6);
-        Node headB = createLinkedListWithDataValues(3);
-        Node mergedList = MergeLists(headA, headB);
-        Node temp = mergedList;
-        System.out.println("output 1");
-        while (temp != null ) {
-            System.out.print(temp.data + "->");
-            temp = temp.next;
-        }
-
-        System.out.print("\n\n\n");
-        System.out.println("Test case 2");
-        System.out.println("--------------------------");
-        headA = createLinkedListWithDataValues(2, 4, 7);
-        headB = createLinkedListWithDataValues(1);
-        mergedList = MergeLists(headA, headB);
-        temp = mergedList;
-        System.out.println("output 2");
-        while (temp != null ) {
-            System.out.print(temp.data + "->");
-            temp = temp.next;
-        }
-
-        System.out.print("\n\n\n");
-        System.out.println("Test case 3");
-        System.out.println("--------------------------");
-        headA = createLinkedListWithDataValues(15);
-        headB = createLinkedListWithDataValues(1);
-        mergedList = MergeLists(headA, headB);
-        temp = mergedList;
-
-
-
-        System.out.println("output 3");
-        while (temp != null ) {
-            System.out.print(temp.data + "->");
-            temp = temp.next;
-        }
-        System.out.print("\n\n\n");
-        System.out.println("Test case 4");
-        System.out.println("--------------------------");
-
-
-
-        headA = null;// createLinkedListWithDataValues(2);
-        headB = createLinkedListWithDataValues(1, 2);
-        mergedList = MergeLists(headA, headB);
-        temp = mergedList;
-        System.out.println("output 4");
-        while (temp != null ) {
-            System.out.print(temp.data + "->");
-            temp = temp.next;
-        }
-        System.out.println("------------ insert node ------------ ");
-
-        Node node =  Insert(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54);
-
-        while (node != null ) {
-            System.out.print(node.data + "->");
-            node = node.next;
-        }
-        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 0);
-        System.out.print("Test case Insert at 0th position");
-        while (node != null ) {
-            System.out.print(node.data + "->");
-            node = node.next;
-        }
-
-        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 6);
-        System.out.print("Test case Insert at 6th position");
-        while (node != null ) {
-            System.out.print(node.data + "->");
-            node = node.next;
-        }
-
-
-        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 10);
-        System.out.print("Test case Insert at 10th position");
-        while (node != null ) {
-            System.out.print(node.data + "->");
-            node = node.next;
-        }
-
-        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 11);
-        System.out.print("Test case Insert at 11th position");
-        while (node != null ) {
-            System.out.print(node.data + "->");
-            node = node.next;
-        }
-
-        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 12);
-        System.out.print("Test case Insert at 12th position");
-        while (node != null ) {
-            System.out.print(node.data + "->");
-            node = node.next;
-        }
+//        System.out.println("Test case 1");
+//        System.out.println("--------------------------");
+//        Node headA = createLinkedListWithDataValues(1,3,5,6);
+//        Node headB = createLinkedListWithDataValues(3);
+//        Node mergedList = MergeLists(headA, headB);
+//        Node temp = mergedList;
+//        System.out.println("output 1");
+//        while (temp != null ) {
+//            System.out.print(temp.data + "->");
+//            temp = temp.next;
+//        }
+//
+//        System.out.print("\n\n\n");
+//        System.out.println("Test case 2");
+//        System.out.println("--------------------------");
+//        headA = createLinkedListWithDataValues(2, 4, 7);
+//        headB = createLinkedListWithDataValues(1);
+//        mergedList = MergeLists(headA, headB);
+//        temp = mergedList;
+//        System.out.println("output 2");
+//        while (temp != null ) {
+//            System.out.print(temp.data + "->");
+//            temp = temp.next;
+//        }
+//
+//        System.out.print("\n\n\n");
+//        System.out.println("Test case 3");
+//        System.out.println("--------------------------");
+//        headA = createLinkedListWithDataValues(15);
+//        headB = createLinkedListWithDataValues(1);
+//        mergedList = MergeLists(headA, headB);
+//        temp = mergedList;
+//
+//
+//
+//        System.out.println("output 3");
+//        while (temp != null ) {
+//            System.out.print(temp.data + "->");
+//            temp = temp.next;
+//        }
+//        System.out.print("\n\n\n");
+//        System.out.println("Test case 4");
+//        System.out.println("--------------------------");
+//
+//
+//
+//        headA = null;// createLinkedListWithDataValues(2);
+//        headB = createLinkedListWithDataValues(1, 2);
+//        mergedList = MergeLists(headA, headB);
+//        temp = mergedList;
+//        System.out.println("output 4");
+//        while (temp != null ) {
+//            System.out.print(temp.data + "->");
+//            temp = temp.next;
+//        }
+//        System.out.println("------------ insert node ------------ ");
+//
+//        Node node =  Insert(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54);
+//
+//        while (node != null ) {
+//            System.out.print(node.data + "->");
+//            node = node.next;
+//        }
+//        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 0);
+//        System.out.print("Test case Insert at 0th position");
+//        while (node != null ) {
+//            System.out.print(node.data + "->");
+//            node = node.next;
+//        }
+//
+//        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 6);
+//        System.out.print("Test case Insert at 6th position");
+//        while (node != null ) {
+//            System.out.print(node.data + "->");
+//            node = node.next;
+//        }
+//
+//
+//        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 10);
+//        System.out.print("Test case Insert at 10th position");
+//        while (node != null ) {
+//            System.out.print(node.data + "->");
+//            node = node.next;
+//        }
+//
+//        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 11);
+//        System.out.print("Test case Insert at 11th position");
+//        while (node != null ) {
+//            System.out.print(node.data + "->");
+//            node = node.next;
+//        }
+//
+//        node =  InsertNth(createLinkedListWithDataValues(1, 2,4,6,7,9,10, 34,23, 78), 54, 12);
+//        System.out.print("Test case Insert at 12th position");
+//        while (node != null ) {
+//            System.out.print(node.data + "->");
+//            node = node.next;
+//        }
     }
 
     public static class Node{

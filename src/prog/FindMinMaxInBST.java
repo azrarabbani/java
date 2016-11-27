@@ -67,4 +67,6 @@ public class FindMinMaxInBST {
 
         System.out.println("Min  " +minMax[0] + " ,Max " + minMax[1]);
     }
+
+
 }

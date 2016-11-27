@@ -31,7 +31,7 @@ public class FindPredecessorTreeNode {
                 if (node.data < ancestor.data) {//predecessor lies in the left subtree of ancestor
                     ancestor = ancestor.left; //go into left side of ancestor
                 } else if (node.data > ancestor.data) {
-                    predecessor = ancestor;//since node.data is less than ancestor it means the successor will be its ancestor
+                    predecessor = ancestor;//since node.data is gt than ancestor it means the successor will be its ancestor
                     ancestor = ancestor.right; //since ancestor is smaller than node go into right
                 }
             }

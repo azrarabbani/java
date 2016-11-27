@@ -1,13 +1,30 @@
 package prog;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by arabbani on 11/18/16.
  */
 public class MaxSumContagiousSubArray {
+
+
+
+    public static int maxConsecutiveSeq(int[] num){
+        Set<Integer> numSet = new HashSet();
+        for(int n : num) {
+            numSet.add(n);
+        }
+        int i = 0;
+        int max = 0;
+        for(int v : numSet){
+            if(numSet.contains(i-1)) continue;
+            int length = 0;
+            while(numSet.contains(i++)) length++;
+            max = Math.max(max, length);
+        }
+        return max;
+    }
+
 
     public static int[] getMaxContagiousSubArray(int[] num){
         int sum = 0;
@@ -21,11 +38,15 @@ public class MaxSumContagiousSubArray {
             count++;
             if(sum > maxSum) {
                 maxSum = sum;
-            } else if(sum < maxSum && num[i] < 0 ) {
-                sIndx = i  - count + 1;
-                endIndx = i - 1;
-                count = 0;
-                sum = 0;
+            } else if(sum < maxSum ){
+                if(num[i] < 0 ) {
+                   if(sum != num[i]) {//
+                        sIndx = i  - count + 1;
+                        endIndx = i - 1;
+                    }
+                    count = 0;
+                    sum = 0;
+                }
             }
         }
 
@@ -44,7 +65,7 @@ public class MaxSumContagiousSubArray {
 
 
     public static void main(String[] args){
-        int[] num= {2,5,4,-7,10,8,-9,1,2,6,9,-20};
+        int[] num= {2,5,4,-7,10,8,-9,-2,-5,1,2,6,9,-20};
         int[] sub = getMaxContagiousSubArray(num);
         System.out.println(""+Arrays.toString(sub));
     }

@@ -28,6 +28,25 @@ public class SortingUtils {
         return sortedStack;
     }
 
+static Stack<Integer> reverseStack(Stack<Integer> s){
+    if(s.isEmpty()) return s;
+    Integer temp = s.pop();
+    reverseStack(s);
+    //s.push(temp);
+    insertAtBottom(s,temp);
+    return s;
+}
+
+    static void insertAtBottom(Stack<Integer> s, Integer x){
+        if(s.isEmpty()) {
+            s.push(x);
+            return;
+        }
+        int temp = s.pop();
+        insertAtBottom(s,x);
+        s.push(temp);
+    }
+
 
     public static Stack<Integer>  sortAsStream(Stack<Integer> stack) {
         return new Stack();//return stack.stream().sorted().map().collect(Collectors.toList());
@@ -39,9 +58,9 @@ public class SortingUtils {
         unsortedStack.push(24);
         unsortedStack.push(7);
         unsortedStack.push(38);
-        System.out.println("UnSorted stack " + unsortedStack.toString());
-        Stack<Integer> sortedStack = sort(unsortedStack);
-        System.out.println("Sorted stack "+sortedStack.toString());
+//        System.out.println("UnSorted stack " + unsortedStack.toString());
+//        Stack<Integer> sortedStack = sort(unsortedStack);
+        System.out.println("Sorted stack "+reverseStack(unsortedStack).toString());
 
 
 

@@ -44,7 +44,7 @@ public class FindSuccessorTreeNode {
     }
 
     public static void main(String[] args) {
-
+//n=12, a=50,17
    /* Let us create following BST
                 50
             /        \
