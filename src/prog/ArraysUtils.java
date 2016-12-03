@@ -38,10 +38,10 @@ public class ArraysUtils{
 
     private void regrowArray() {
         Integer[] numbers2 = new Integer[numbers.length * GROWTH_FACTOR];
-        int index = 0;
-        for(int i : numbers) {
-            numbers2[index++] = i;
-        }
+//        int index = 0;
+//        for(int i : numbers) {
+//            //numbers2[index++] = i;
+//        }i
         numbers = numbers2;
     }
 

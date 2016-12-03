@@ -100,7 +100,7 @@ public class BSTUtil {
 
     private boolean isMirror(Node leftNode, Node rightNode) {
         if((leftNode == null && rightNode != null ) || (leftNode != null && rightNode == null) ) {
-            return true;
+            return false;
         }
 
         if(leftNode == null && rightNode == null ) {
